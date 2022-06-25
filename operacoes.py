@@ -33,11 +33,18 @@ def consultar():
 
 def atualizar(codigo, campo, novoDado):
     try:
-        sql = "update into pessoa set {} = '{}' where codigo = '{}''".format(codigo, campo, novoDado)
+        sql = "update pessoa set {} = '{}' where codigo = '{}'".format(campo, novoDado, codigo)
         con.execute(sql)
         db_connection.commit()
         print('{} Atualizado!'.format(con.rowcount))
     except Exception as erro:
         print(erro)
 
-
+def excluir(cod):
+    try:
+        sql = "delete from pessoa where codigo = '{}'".format(cod)
+        con.execute(sql)
+        db_connection.commit()
+        print('{} Excluido!'.format(con.rowcount))
+    except Exception as erro:
+        print(erro)
